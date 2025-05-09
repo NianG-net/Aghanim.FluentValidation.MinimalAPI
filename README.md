@@ -33,7 +33,7 @@ api add FluentValidationEndpointFilter
 ```csharp
 var api = app.MapGroup("api");
 api.MapGet("demo", () => 1);
-api.MapPost("/weatherforecast", (WeatherRequest request, ILogger<Program> logger) =>
+api.MapPost("/weatherforecast", (WeatherRequest request) =>
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast

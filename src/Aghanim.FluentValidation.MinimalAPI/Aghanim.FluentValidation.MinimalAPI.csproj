@@ -13,15 +13,13 @@
 		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 		
 	</PropertyGroup>
-
+	
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.*" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
 	</ItemGroup>
-	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<None Include="..\..\README.md" Pack="true" PackagePath="" />
 		<ProjectReference Include="..\Aghanim.FluentValidation.MinimalAPI.Generator\Aghanim.FluentValidation.MinimalAPI.Generator.csproj" PrivateAssets="all" />
 		<Content Include="$(OutputPath)\Aghanim.FluentValidation.MinimalAPI.Generator.dll" PackagePath="analyzers/dotnet/cs" Visible="false" />
 	</ItemGroup>
