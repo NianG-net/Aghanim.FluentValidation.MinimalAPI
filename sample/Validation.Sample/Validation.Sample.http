@@ -1,0 +1,18 @@
+@Validation.Sample_HostAddress = http://localhost:5097
+
+POST {{Validation.Sample_HostAddress}}/weatherforecast/
+Accept: application/json
+Content-Type: application/json  
+{
+  "summary": "Freezing"
+}
+###
+
+
+POST {{Validation.Sample_HostAddress}}/weatherforecast/
+Accept: application/json
+Content-Type: application/json  
+{
+  "summary": "AAA"
+}
+###

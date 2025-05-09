@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<PublishAot>true</PublishAot>
+		<Configurations>Debug;Release;Debug_GEN</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="12.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+		<PackageReference Include="Scalar.AspNetCore" Version="2.2.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Aghanim.FluentValidation.MinimalAPI.Generator\Aghanim.FluentValidation.MinimalAPI.Generator.csproj" OutputItemType="Analyzer" Reference0utputAssembly="false" />
+		<ProjectReference Include="..\..\src\Aghanim.FluentValidation.MinimalAPI\Aghanim.FluentValidation.MinimalAPI.csproj" />
+		<ProjectReference Include="..\Validation.lib\Validation.lib.csproj" />
+	</ItemGroup>
+
+</Project>
