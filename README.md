@@ -47,3 +47,22 @@ api.MapPost("/weatherforecast", (WeatherRequest request) =>
 
 api.AddFluentValidationEndpointFilter();
 ```
+
+also can custom FluentValidationEndpointFilter 
+DefaultFluentValidationEndpointFilter are defined as follows:
+```csharp
+public class DefaultFluentValidationEndpointFilter : IFluentValidationEndpointFilter
+{
+
+    public ValueTask<object> FluentValidationInvokeAsync(IEnumerable<global::FluentValidation.Results.ValidationFailure> validationResults)
+    {
+        var errors = validationResults.Aggregate(new Dictionary<string, string[]>(), static (dict, error) =>
+        {
+            dict[error.PropertyName] = dict.TryGetValue(error.PropertyName, out var values) ? [.. values, error.ErrorMessage] : [error.ErrorMessage];
+
+            return dict;
+        });
+        return ValueTask.FromResult<object>(TypedResults.ValidationProblem(errors));
+    }
+}
+```
