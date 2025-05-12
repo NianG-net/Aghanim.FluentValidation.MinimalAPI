@@ -176,11 +176,15 @@ internal static class GeneratorHelpers
                 }
             }
             public static global::System.Collections.Concurrent.ConcurrentDictionary<string, int> ArgumentIndex { get; private set; } = new();
-
-            readonly static Dictionary<nint, Func<IServiceProvider, object, IEnumerable<global::FluentValidation.Results.ValidationFailure>>> TypeDict = new()
-            {
-               {{FormatCode(code.ToString())}}
-            };
+            {{FormatCode($$"""
+                readonly static Dictionary <nint, Func<IServiceProvider, object, IEnumerable<global::FluentValidation.Results.ValidationFailure>>> TypeDict = new()
+                {
+                    {{code}}
+                };
+           
+            """)
+            }}
+           
 
             public static IEnumerable<global::FluentValidation.Results.ValidationFailure> Match(nint typeHandle, object obj, IServiceProvider serviceProvider)
             => TypeDict.TryGetValue(typeHandle, out var func) ? func.Invoke(serviceProvider, obj) : [];
